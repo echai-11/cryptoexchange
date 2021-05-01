@@ -3,6 +3,13 @@
   box-sizing: border-box;
 }
 
+body {
+  background: #000;
+  h1 {
+    color: #fff;
+    font-size: 26px;
+  }
+}
 // Pagination
 
 ul.pagination {
@@ -10,19 +17,37 @@ ul.pagination {
   flex-direction: row;
   justify-content: space-evenly;
   padding-inline-start: 0px;
+  background: white;
+  border-radius: 5px;
+  padding: 10px 15px;
   li {
     list-style: none;
     padding: 5px 10px;
+    &:hover {
+      cursor: pointer;
+      font-weight: bold;
+    }
   }
   li.active {
     border: 1px solid black;
     border-radius: 5px;
+    font-weight: bold;
   }
+}
+.pagination-data {
+  color: white;
+  margin: 10px auto;
+  text-align: center;
 }
 //Table
 .react-table-custom {
+  background: white;
+  border-radius: 5px;
+  padding: 15px;
   overflow-x: scroll;
+
   table {
+    border-collapse: collapse;
     th {
       text-align: left;
       min-width: 110px;
@@ -32,16 +57,127 @@ ul.pagination {
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
-      min-height: 90px;
+      min-height: 80px;
+      padding: 10px 0;
     }
     img.logo-image {
-      width: 50px;
-      height: 50px;
+      width: 35px;
+      height: 35px;
       margin-bottom: 10px;
     }
+    td {
+      padding: 0;
+    }
+    thead th {
+      padding-bottom: 15px;
+    }
+    thead tr,
+    tr:not(:last-child) {
+      border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+    }
   }
-
   tr:hover {
     font-weight: bold;
+  }
+}
+//Info page
+
+.cryptoInfoPage {
+  color: #fff;
+  .header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    h1 {
+      margin-left: 10px;
+    }
+  }
+  img.logo-image {
+    height: 35px;
+    width: 35px;
+  }
+  span {
+    font-size: 18px;
+    line-height: 26px;
+  }
+  span.title {
+    font-weight: bold;
+    margin-right: 10px;
+  }
+  .description {
+    margin-top: 26px;
+  }
+}
+.back-button-link {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  text-decoration: none;
+  border-bottom: 2px solid #fff;
+  padding: 5px 0;
+  svg {
+    fill: #fff;
+  }
+  span {
+    color: #fff;
+    font-size: 18px;
+    margin-left: 10px;
+  }
+  &:hover {
+    span {
+      font-weight: bold;
+    }
+  }
+  &:visited {
+    svg {
+      fill: #fff;
+    }
+    span {
+      color: #fff;
+    }
+  }
+}
+.back-button {
+  background: #fff;
+  margin: 25px auto !important;
+  a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    &:visited {
+      color: #000;
+    }
+  }
+  svg {
+    margin-right: 5px;
+  }
+  span {
+    text-transform: capitalize;
+    color: #000;
+  }
+}
+
+@media (min-width: 601px) {
+  h1 {
+    font-size: 32px;
+    text-align: center;
+  }
+  .react-table-custom {
+    table {
+      width: 100%;
+    }
+  }
+  .pagination {
+    max-width: 500px;
+    margin: 20px auto;
+  }
+  .pagination-data {
+    margin: 15px auto;
+  }
+  .back-button-link {
+    justify-content: flex-end;
   }
 }

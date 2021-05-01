@@ -128,6 +128,9 @@ const CryptoTable = () => {
       ) : (
         <>
           <Table columns={columns} data={data} />
+          <div className="pagination-data">
+            <span>Showing 10 of {data.length * 10}</span>
+          </div>
           <ReactPaginate
             previousLabel={"<"}
             nextLabel={">"}

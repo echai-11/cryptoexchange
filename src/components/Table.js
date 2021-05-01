@@ -2,7 +2,7 @@ import React from "react";
 import { useTable } from "react-table";
 
 const Table = (props) => {
-  const { columns, data, onRowClick } = props;
+  const { columns, data } = props;
   const {
     getTableProps,
     getTableBodyProps,

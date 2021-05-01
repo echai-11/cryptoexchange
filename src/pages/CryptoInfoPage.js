@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Grid, Button } from "@material-ui/core";
 import LoadingComponent from "../components/LoadingComponent";
+import KeyboardBackspaceIcon from "@material-ui/icons/KeyboardBackspace";
+import { Link } from "react-router-dom";
+import HomeIcon from "@material-ui/icons/Home";
 
-//include back to main page button
 const CryptoInfoPage = () => {
   const [dataInfo, setDataInfo] = useState({});
   const [loading, setLoading] = useState(false);
@@ -44,30 +46,56 @@ const CryptoInfoPage = () => {
   }
 
   return (
-    <Grid container>
+    <Grid container className="cryptoInfoPage">
       {loading ? (
         <LoadingComponent />
       ) : (
         <>
-          <Button>Back to Home</Button>
+          <Link
+            to={{
+              pathname: "/",
+              search: "",
+            }}
+            className="back-button-link"
+          >
+            <KeyboardBackspaceIcon /> <span>Back</span>
+          </Link>
 
-          <Grid xs={12}>
-            <img src={dataInfo.image} alt={`${dataInfo.name} logo`} />
+          <Grid xs={12} className="header">
+            <img
+              src={dataInfo.image}
+              alt={`${dataInfo.name} logo`}
+              className="logo-image"
+            />
             <h1>{dataInfo.name}</h1>
           </Grid>
           <Grid xs={12}>
-            <span>Country:</span> <span>{dataInfo.country}</span>
+            <span className="title">Country:</span>{" "}
+            <span>{dataInfo.country}</span>
             <br />
-            <span>Trust Rank:</span> <span>{dataInfo.trust_score_rank}</span>
+            <span className="title">Trust Rank:</span>{" "}
+            <span>{dataInfo.trust_score_rank}</span>
             <br />
-            <span>Year Established:</span>{" "}
+            <span className="title">Year Established:</span>{" "}
             <span>{dataInfo.year_established}</span>
             <br />
-            <span>Social Media Links:</span>
+            <span className="title">Social Media Links:</span>
             <br />
-            <span>{dataInfo.description}</span>
+            <div className="description">
+              <span>{dataInfo.description}</span>
+            </div>
           </Grid>
-          <Button>Back to Home</Button>
+          <Button className="back-button" variant="contained">
+            <Link
+              to={{
+                pathname: "/",
+                search: "",
+              }}
+            >
+              <HomeIcon />
+              <span>Go Back Home</span>
+            </Link>
+          </Button>
         </>
       )}
     </Grid>
