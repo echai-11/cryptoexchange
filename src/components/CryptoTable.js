@@ -58,6 +58,7 @@ const CryptoTable = () => {
                 pathname: "/crypto-info",
                 search: `?n=${value.row.original.id}`,
               }}
+              className="exchange-redirect-link"
             >
               <img
                 src={value.row.original.image}
