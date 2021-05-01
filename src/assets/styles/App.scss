@@ -12,14 +12,35 @@ ul.pagination {
   padding-inline-start: 0px;
   li {
     list-style: none;
+    padding: 5px 10px;
+  }
+  li.active {
+    border: 1px solid black;
+    border-radius: 5px;
   }
 }
 //Table
 .react-table-custom {
   overflow-x: scroll;
-  table th {
-    text-align: left;
+  table {
+    th {
+      text-align: left;
+      min-width: 110px;
+    }
+    .innerCell,
+    .innerCell a {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      min-height: 90px;
+    }
+    img.logo-image {
+      width: 50px;
+      height: 50px;
+      margin-bottom: 10px;
+    }
   }
+
   tr:hover {
     font-weight: bold;
   }

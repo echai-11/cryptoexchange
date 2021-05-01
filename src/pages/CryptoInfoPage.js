@@ -52,7 +52,7 @@ const CryptoInfoPage = () => {
           <Button>Back to Home</Button>
 
           <Grid xs={12}>
-            <img src={dataInfo.url} alt={`${dataInfo.name} logo`} />
+            <img src={dataInfo.image} alt={`${dataInfo.name} logo`} />
             <h1>{dataInfo.name}</h1>
           </Grid>
           <Grid xs={12}>

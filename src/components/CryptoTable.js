@@ -14,8 +14,7 @@ const CryptoTable = () => {
     await fetch("https://api.coingecko.com/api/v3/exchanges")
       .then((response) => response.json())
       .then((data) => {
-        console.log(data.length);
-        setDataLength(data.length);
+        setDataLength(data.length / 10);
       })
       .catch((error) => {
         console.log(error);
@@ -38,7 +37,7 @@ const CryptoTable = () => {
   useEffect(() => {
     setLoading(true);
     fetchDataLength();
-    fetchData(1);
+    setPage(1);
   }, []);
 
   useEffect(() => {
@@ -52,7 +51,7 @@ const CryptoTable = () => {
       accessor: "name",
       Cell: (value) => {
         return (
-          <div className="nameCell">
+          <div className="innerCell">
             <Link
               to={{
                 pathname: "/crypto-info",
@@ -62,6 +61,7 @@ const CryptoTable = () => {
               <img
                 src={value.row.original.image}
                 alt={`${value.row.original.name} logo`}
+                className="logo-image"
               />
               <span>{value.row.original.name}</span>
             </Link>
@@ -73,6 +73,13 @@ const CryptoTable = () => {
       Header: "Country",
       id: 1,
       accessor: "country",
+      Cell: (value) => {
+        return (
+          <div className="innerCell">
+            <span>{value.row.original.country}</span>
+          </div>
+        );
+      },
     },
     {
       Header: "URL",
@@ -80,7 +87,7 @@ const CryptoTable = () => {
       accessor: "url",
       Cell: (value) => {
         return (
-          <div className="urlCell">
+          <div className="innerCell">
             <a href={value.row.original.url} target="_blank" rel="noreferrer">
               {value.row.original.url}
             </a>
@@ -92,8 +99,16 @@ const CryptoTable = () => {
       Header: "Trust Rank",
       id: 3,
       accessor: "trust_score_rank",
+      Cell: (value) => {
+        return (
+          <div className="innerCell">
+            <span>{value.row.original.trust_score_rank}</span>
+          </div>
+        );
+      },
     },
   ];
+
   if (data === null) {
     return (
       <Grid item xs={12}>
@@ -114,15 +129,17 @@ const CryptoTable = () => {
         <>
           <Table columns={columns} data={data} />
           <ReactPaginate
-            previousLabel={"< previous"}
-            nextLabel={"next >"}
+            previousLabel={"<"}
+            nextLabel={">"}
             breakLabel={"..."}
             breakClassName={"break-me"}
             pageCount={dataLength}
+            initialPage={0}
             marginPagesDisplayed={2}
-            pageRangeDisplayed={2}
+            pageRangeDisplayed={3}
             onPageChange={(page) => {
-              setPage(page.selected);
+              let pageNo = page.selected + 1;
+              setPage(pageNo);
             }}
             containerClassName={"pagination"}
             activeClassName={"active"}
