@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Grid } from "@material-ui/core";
 import Table from "./Table";
 import LoadingComponent from "./LoadingComponent";
+import ErrorMessage from "./ErrorMessage";
 import ReactPaginate from "react-paginate";
 import { Link } from "react-router-dom";
 
@@ -110,15 +111,7 @@ const CryptoTable = () => {
   ];
 
   if (data === null) {
-    return (
-      <Grid item xs={12}>
-        <span>
-          There was an error fetching data. Please try refreshing the page!
-        </span>
-        <br />
-        <span>Thank you for your patience!</span>
-      </Grid>
-    );
+    return <ErrorMessage />;
   }
 
   return (
