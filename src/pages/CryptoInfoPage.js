@@ -20,7 +20,7 @@ const CryptoInfoPage = () => {
   };
   const id = getId();
   const getData = async (id) => {
-    const url = `https://api.coingecko.com/api/v3/exchanges/${id}`;
+    const url = `${process.env.REACT_APP_EXCHANGE_LINK}/${id}`;
     await fetch(url)
       .then((response) => response.json())
       .then((data) => {

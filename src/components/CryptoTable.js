@@ -12,7 +12,7 @@ const CryptoTable = () => {
   const [page, setPage] = useState(1);
   const [dataLength, setDataLength] = useState(0);
   const fetchDataLength = async () => {
-    await fetch("https://api.coingecko.com/api/v3/exchanges")
+    await fetch(`${process.env.REACT_APP_EXCHANGE_LINK}`)
       .then((response) => response.json())
       .then((data) => {
         setDataLength(data.length / 10);
@@ -23,7 +23,7 @@ const CryptoTable = () => {
       });
   };
   const fetchData = async (pageNo) => {
-    const url = `https://api.coingecko.com/api/v3/exchanges?per_page=10&page=${pageNo}`;
+    const url = `${process.env.REACT_APP_EXCHANGE_LINK}?per_page=10&page=${pageNo}`;
     await fetch(url)
       .then((response) => response.json())
       .then((data) => {
