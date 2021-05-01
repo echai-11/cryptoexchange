@@ -71,6 +71,7 @@ ul.pagination {
       @include justify-content(flex-end);
       min-height: 80px;
       padding: 10px 10px 10px 0;
+      text-decoration: none;
     }
     img.logo-image {
       width: 35px;
